@@ -28,7 +28,6 @@ This repository may include experiments related to:
 
 ### 🗄 Database
 - MongoDB
-- MySQL (if applicable)
 
 ### 🔧 Tools & Others
 - Git & GitHub
