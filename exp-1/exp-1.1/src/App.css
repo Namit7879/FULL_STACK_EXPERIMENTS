@@ -1,0 +1,77 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.App h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #000000;
+}
+.counter-container {
+  background-color: #ffffff;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+.counter-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #000000;
+}
+.button-group {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-increment {
+  background-color: #359a39;
+  color: white;
+}
+
+.btn-increment:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+}
+
+.btn-decrement {
+  background-color: #ff1100;
+  color: white;
+}
+
+.btn-decrement:hover {
+  background-color: #da190b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  color: #666666;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
