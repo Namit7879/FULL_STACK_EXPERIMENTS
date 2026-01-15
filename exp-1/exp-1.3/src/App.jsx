@@ -18,7 +18,7 @@ function App() {
             className="toggle-btn"
             aria-label="Toggle theme"
           >
-            {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+            {isDarkMode ? 'Light Mode':'Dark Mode'}
           </button>
         </header>
 

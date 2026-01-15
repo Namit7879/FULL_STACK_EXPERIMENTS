@@ -11,26 +11,25 @@ function App() {
   const decrement = () => {
     setCount(count - 1)
   }
-
+  
   return (
-    <div className="App">
+    <div class="App">
       <h1>Simple Counter SPA</h1>
-      <div className="counter-container">
+      <div class="counter-container">
         <h2>Counter Value: {count}</h2>
-        <div className="button-group">
-          <button onClick={increment} className="btn btn-increment">
+        <div class="button-group">
+          <button onClick={increment} class="btn btn-increment">
             Increment (+)
           </button>
-          <button onClick={decrement} className="btn btn-decrement">
+          <button onClick={decrement} class="btn btn-decrement">
             Decrement (-)
           </button>
         </div>
-        <footer className="footer">
+        <footer class="footer">
           <p>&copy; MADE BY NAMIT SHARMA.</p>
         </footer>
       </div>
     </div>
   )
 }
-
 export default App
