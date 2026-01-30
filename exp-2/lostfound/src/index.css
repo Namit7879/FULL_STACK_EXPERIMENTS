@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #faf8f5;
+  --panel: #ffffff;
+  --card: #ffffff;
+  --primary: #8b5cf6;
+  --primary-light: #a78bfa;
+  --accent: #f97272;
+  --accent-soft: #fcd5d5;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --text: #2d2623;
+  --text-light: #5a524a;
+  --muted: #8b7d77;
+  --border: rgba(139, 125, 119, 0.1);
+  --glass: rgba(139, 125, 119, 0.04);
+  --shadow: 0 8px 24px rgba(45, 38, 35, 0.06);
+  --shadow-sm: 0 2px 8px rgba(45, 38, 35, 0.04);
+  --primary-color: #8b5cf6;
+  --secondary-color: #f97272;
+  --success-color: #10b981;
+  --error-color: #f97272;
+  --warning-color: #f59e0b;
+  --info-color: #8b5cf6;
+  --light-bg: #faf8f5;
+  --dark-bg: #2d2623;
+  --text-primary: #2d2623;
+  --text-secondary: #8b7d77;
+  --border-color: #e6dfd7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #faf8f5 0%, #f5f1ed 50%, #f0ebe5 100%);
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Utility Classes */
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Text utilities */
+.font-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.p-4 {
+  padding: 2rem;
+}
+
