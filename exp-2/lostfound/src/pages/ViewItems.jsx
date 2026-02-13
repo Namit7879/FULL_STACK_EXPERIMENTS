@@ -1,11 +1,11 @@
 import { Container, Grid, Box, Typography, Pagination } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
 import FilterBar from '../components/FilterBar';
 import ItemCard from '../components/ItemCard';
 
 export default function ViewItems() {
-  const allItems = [
+  const defaultItems = [
     {
       id: 1,
       title: 'Lost: Silver iPhone 15',
@@ -72,6 +72,13 @@ export default function ViewItems() {
   const [filters, setFilters] = useState({ status: null, categories: [] });
   const [page, setPage] = useState(1);
   const itemsPerPage = 6;
+  const [allItems, setAllItems] = useState(defaultItems);
+
+  // Load reported items from localStorage on mount
+  useEffect(() => {
+    const reportedItems = JSON.parse(localStorage.getItem('reportedItems')) || [];
+    setAllItems([...defaultItems, ...reportedItems]);
+  }, []);
 
   const filteredItems = allItems.filter(item => {
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

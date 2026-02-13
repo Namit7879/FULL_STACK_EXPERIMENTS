@@ -1,5 +1,6 @@
 import { Container, Box, Typography, Button, Grid, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
@@ -7,8 +8,7 @@ import ItemCard from '../components/ItemCard';
 
 export default function Home() {
   const navigate = useNavigate();
-
-  const recentItems = [
+  const [recentItems, setRecentItems] = useState([
     {
       id: 1,
       title: 'Lost: Silver iPhone 15',
@@ -39,7 +39,17 @@ export default function Home() {
       reporter: 'Mike Johnson',
       description: 'Navy blue backpack with laptop inside. Very important.',
     },
-  ];
+  ]);
+
+  // Load reported items from localStorage
+  useEffect(() => {
+    const reportedItems = JSON.parse(localStorage.getItem('reportedItems')) || [];
+    if (reportedItems.length > 0) {
+      // Show latest reported items (last 3)
+      const latestReported = reportedItems.slice(-3).reverse();
+      setRecentItems([...recentItems, ...latestReported]);
+    }
+  }, []);
 
   const features = [
     {

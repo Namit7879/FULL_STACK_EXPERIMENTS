@@ -39,8 +39,33 @@ export default function ReportItem() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    // Validate form
+    if (!formData.title || !formData.category || !formData.location || !formData.date || !formData.reporter) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    // Create new item with ID
+    const newItem = {
+      id: Date.now(),
+      ...formData,
+      createdAt: new Date().toISOString(),
+    };
+
+    // Get existing items from localStorage
+    const existingItems = JSON.parse(localStorage.getItem('reportedItems')) || [];
+    
+    // Add new item
+    existingItems.push(newItem);
+    
+    // Save to localStorage
+    localStorage.setItem('reportedItems', JSON.stringify(existingItems));
+
+    console.log('Item reported:', newItem);
     alert('Item reported successfully! Thank you for contributing to our community.');
+    
+    // Reset form
     setFormData({
       title: '',
       description: '',
