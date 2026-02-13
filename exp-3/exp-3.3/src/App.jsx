@@ -15,7 +15,7 @@ function App() {
         {/* Navigation Bar */}
         <nav className="navbar">
           <div className="nav-container">
-            <div className="nav-logo">MultiSPA</div>
+            <div className="nav-logo">ProSPA</div>
             <ul className="nav-menu">
               <li><NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Home</NavLink></li>
               <li><NavLink to="/products" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Products</NavLink></li>
@@ -45,7 +45,7 @@ function App() {
           <div className="footer-content">
             <div className="footer-section">
               <h4>About</h4>
-              <p>A modern multi-page SPA built with React Router showcasing best practices in client-side routing.</p>
+              <p>A modern multi-page SPA built with React Router showcasing best practices in client-side routing and professional UI/UX design.</p>
             </div>
             <div className="footer-section">
               <h4>Quick Links</h4>

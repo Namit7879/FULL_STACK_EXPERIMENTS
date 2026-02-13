@@ -13,7 +13,7 @@ function App() {
         {/* Main Navigation using NavLink for active state styling */}
         <nav className="navbar">
           <div className="nav-container">
-            <h1 className="nav-logo">LinkNav</h1>
+            <h1 className="nav-logo">ActiveState</h1>
             <ul className="nav-menu">
               <li className="nav-item">
                 <NavLink 
