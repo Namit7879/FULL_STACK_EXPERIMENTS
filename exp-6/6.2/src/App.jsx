@@ -33,8 +33,12 @@ function App() {
     // Password validation
     if (!formData.password) {
       newErrors.password = 'Password is required'
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters'
+    } else if (formData.password.length < 5) {
+      newErrors.password = 'Password must be at least 5 characters'
+    } else if (!/^[A-Z]/.test(formData.password)) {
+      newErrors.password = 'Password must start with a capital letter'
+    } else if (!/^[A-Z][a-zA-Z0-9_-]/.test(formData.password)) {
+      newErrors.password = 'Password cannot start with special characters'
     }
 
     // Age validation
@@ -59,6 +63,15 @@ function App() {
     const newErrors = validateForm()
 
     if (Object.keys(newErrors).length === 0) {
+      const alertMessage = `
+Form Submitted Successfully!
+
+Name: ${formData.name}
+Email: ${formData.email}
+Age: ${formData.age}
+      `.trim()
+      
+      alert(alertMessage)
       setSubmitted(formData)
       setErrors({})
       setTimeout(() => handleReset(), 2000)
@@ -117,7 +130,7 @@ function App() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Enter your password (min 6 characters)"
+              placeholder="Enter password (min 5 chars, start with capital letter)"
             />
             {errors.password && <span className="error-message">{errors.password}</span>}
           </div>
