@@ -15,3 +15,9 @@ Controlled components are React components where form data is managed by React s
 - Submitted data display
 
 ![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)

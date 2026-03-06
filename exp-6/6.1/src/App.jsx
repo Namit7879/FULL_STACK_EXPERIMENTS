@@ -3,126 +3,233 @@ import './App.css'
 
 function App() {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    subject: '',
-    message: '',
+    firstName: '',
+    lastName: '',
+    gender: '',
+    address: '',
+    dob: '',
+    skillset: [],
+    state: '',
   })
 
   const [submitted, setSubmitted] = useState(null)
-  const [errors, setErrors] = useState({})
 
-  // Handle input change
+  // Handle text input change
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
 
-  // Validate form
-  const validateForm = () => {
-    const newErrors = {}
+  // Handle radio button change
+  const handleRadioChange = (e) => {
+    const { value } = e.target
+    setFormData({ ...formData, gender: value })
+  }
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full Name is required'
+  // Handle checkbox change
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target
+    if (checked) {
+      setFormData({
+        ...formData,
+        skillset: [...formData.skillset, value],
+      })
+    } else {
+      setFormData({
+        ...formData,
+        skillset: formData.skillset.filter((skill) => skill !== value),
+      })
     }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email'
-    }
-
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required'
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required'
-    }
-
-    return newErrors
   }
 
   // Handle submit
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newErrors = validateForm()
-
-    if (Object.keys(newErrors).length === 0) {
-      setSubmitted(formData)
-      setErrors({})
-      setTimeout(() => handleReset(), 2000)
-    } else {
-      setErrors(newErrors)
-    }
+    setSubmitted(formData)
   }
 
   // Handle reset
   const handleReset = () => {
-    setFormData({ fullName: '', email: '', subject: '', message: '' })
-    setErrors({})
+    setFormData({
+      firstName: '',
+      lastName: '',
+      gender: '',
+      address: '',
+      dob: '',
+      skillset: [],
+      state: '',
+    })
     setSubmitted(null)
   }
 
   return (
     <div>
-      <h1>Contact Form</h1>
+      <h1>User Authentication Form</h1>
 
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          {submitted && <div className="success-message">Form submitted successfully!</div>}
-
+          {/* First Name */}
           <div className="form-group">
-            <label htmlFor="fullName">Full Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input
               type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
-              placeholder="Enter your full name"
+              placeholder="Enter your first name"
             />
-            {errors.fullName && <span className="error-message">{errors.fullName}</span>}
           </div>
 
+          {/* Last Name */}
           <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-            />
-            {errors.email && <span className="error-message">{errors.email}</span>}
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="subject">Subject</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
               onChange={handleChange}
-              placeholder="Enter subject"
+              placeholder="Enter your last name"
             />
-            {errors.subject && <span className="error-message">{errors.subject}</span>}
           </div>
 
+          {/* Gender - Radio Buttons */}
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label>Gender</label>
+            <div className="radio-group">
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Male"
+                  checked={formData.gender === 'Male'}
+                  onChange={handleRadioChange}
+                />
+                Male
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Female"
+                  checked={formData.gender === 'Female'}
+                  onChange={handleRadioChange}
+                />
+                Female
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Other"
+                  checked={formData.gender === 'Other'}
+                  onChange={handleRadioChange}
+                />
+                Other
+              </label>
+            </div>
+          </div>
+
+          {/* Address - Textarea */}
+          <div className="form-group">
+            <label htmlFor="address">Address</label>
             <textarea
-              id="message"
-              name="message"
-              value={formData.message}
+              id="address"
+              name="address"
+              value={formData.address}
               onChange={handleChange}
-              placeholder="Enter your message"
+              placeholder="Enter your address"
+              rows="4"
             />
-            {errors.message && <span className="error-message">{errors.message}</span>}
           </div>
 
+          {/* Date of Birth - Date/Time Picker */}
+          <div className="form-group">
+            <label htmlFor="dob">Date of Birth</label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              value={formData.dob}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Skillset - Checkboxes */}
+          <div className="form-group">
+            <label>Skillset</label>
+            <div className="checkbox-group">
+              <label>
+                <input
+                  type="checkbox"
+                  value="JavaScript"
+                  checked={formData.skillset.includes('JavaScript')}
+                  onChange={handleCheckboxChange}
+                />
+                JavaScript
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="React"
+                  checked={formData.skillset.includes('React')}
+                  onChange={handleCheckboxChange}
+                />
+                React
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="Node.js"
+                  checked={formData.skillset.includes('Node.js')}
+                  onChange={handleCheckboxChange}
+                />
+                Node.js
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="Python"
+                  checked={formData.skillset.includes('Python')}
+                  onChange={handleCheckboxChange}
+                />
+                Python
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="MongoDB"
+                  checked={formData.skillset.includes('MongoDB')}
+                  onChange={handleCheckboxChange}
+                />
+                MongoDB
+              </label>
+            </div>
+          </div>
+
+          {/* State - Dropdown */}
+          <div className="form-group">
+            <label htmlFor="state">State</label>
+            <select
+              id="state"
+              name="state"
+              value={formData.state}
+              onChange={handleChange}
+            >
+              <option value="">Select State</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Pune">Pune</option>
+              <option value="Ahmedabad">Ahmedabad</option>
+            </select>
+          </div>
+
+          {/* Buttons */}
           <div className="button-group">
             <button type="submit" className="submit-btn">
               Submit
@@ -134,20 +241,30 @@ function App() {
         </form>
       </div>
 
+      {/* Display submitted data */}
       {submitted && (
         <div className="output-container">
           <h2>Submitted Data:</h2>
           <div className="output-item">
-            <strong>Full Name:</strong> {submitted.fullName}
+            <strong>First Name:</strong> {submitted.firstName}
           </div>
           <div className="output-item">
-            <strong>Email:</strong> {submitted.email}
+            <strong>Last Name:</strong> {submitted.lastName}
           </div>
           <div className="output-item">
-            <strong>Subject:</strong> {submitted.subject}
+            <strong>Gender:</strong> {submitted.gender}
           </div>
           <div className="output-item">
-            <strong>Message:</strong> {submitted.message}
+            <strong>Address:</strong> {submitted.address}
+          </div>
+          <div className="output-item">
+            <strong>Date of Birth:</strong> {submitted.dob}
+          </div>
+          <div className="output-item">
+            <strong>Skillset:</strong> {submitted.skillset.join(', ') || 'None selected'}
+          </div>
+          <div className="output-item">
+            <strong>State:</strong> {submitted.state}
           </div>
         </div>
       )}
