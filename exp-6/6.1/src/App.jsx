@@ -62,6 +62,14 @@ function App() {
     setSubmitted(null)
   }
 
+  const getTodayDate = () => {
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = String(today.getMonth() + 1).padStart(2, '0')
+    const day = String(today.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
+  }
+
   return (
     <div>
       <h1>User Authentication Form</h1>
@@ -153,6 +161,7 @@ function App() {
               name="dob"
               value={formData.dob}
               onChange={handleChange}
+              max={getTodayDate()}
             />
           </div>
 

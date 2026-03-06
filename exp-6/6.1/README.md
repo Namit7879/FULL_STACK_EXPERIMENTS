@@ -14,7 +14,7 @@ Controlled components are React components where form data is managed by React s
 - Error validation
 - Submitted data display
 
-![alt text](image.png)
+<!-- ![alt text](image.png) -->
 
 ![alt text](image-1.png)
 
