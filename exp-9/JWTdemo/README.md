@@ -14,6 +14,11 @@ A simple and secure **Spring Boot** project demonstrating **JWT-based authentica
 
 ---
 
+### Working Code
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/fc7d0d76-f5e3-4bba-809b-ccdc98320bb0" />
+
+---
+
 ### 1. Register User
 
 * **Method:** `POST`
