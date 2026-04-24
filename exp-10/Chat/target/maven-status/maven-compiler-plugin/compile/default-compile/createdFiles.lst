@@ -1,0 +1,4 @@
+Websocket\Chat\Controller\ChatController.class
+Websocket\Chat\Config\WebSocketConfig.class
+Websocket\Chat\ChatApplication.class
+Websocket\Chat\Model\Message.class
